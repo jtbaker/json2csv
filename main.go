@@ -19,6 +19,7 @@ func ReadInput(inputFilePath string) ([]Message, error) {
 		if err != nil {
 			return nil, err
 		}
+		defer file.Close()
 		scanner = bufio.NewScanner(file)
 
 	} else {
@@ -104,7 +105,7 @@ func main() {
 				writer.WriteString(fmt.Sprintf("%v", match))
 			}
 			if idx < len(columns)-1 {
-				// Only write column 
+				// Only write column
 				writer.WriteString(",")
 			}
 
